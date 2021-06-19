@@ -9,10 +9,8 @@ const app = new Vue({
   },
   mounted () {
     try {
-      this.tasks = JSON.parse(localStorage.tasks || '[]')
-    } catch {
-      this.tasks = []
-    }
+      this.tasks = JSON.parse(localStorage.tasks)
+    } catch {}
   },
   watch: {
     tasks: {
@@ -24,10 +22,6 @@ const app = new Vue({
   },
   methods: {
     addNewTask () {
-      if (!this.newTaskText) {
-        return
-      }
-
       const task = {
         id: generateId(),
         text: this.newTaskText,
