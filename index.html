@@ -48,7 +48,7 @@
             @change="!task.text && removeTask(index)"
           />
           <button class="task-item__remove-button" @click="removeTask(index)">
-            <span role="img" class="task-item__remove-icon">
+            <span role="img" class="task-item__remove-icon" aria-label="削除">
               &#x2716;&#xFE0E;
             </span>
           </button>
