@@ -7,6 +7,21 @@ const app = new Vue({
     newTaskText: '',
     tasks: []
   },
+  mounted () {
+    try {
+      this.tasks = JSON.parse(localStorage.tasks || '[]')
+    } catch {
+      this.tasks = []
+    }
+  },
+  watch: {
+    tasks: {
+      deep: true,
+      handler (tasks) {
+        localStorage.tasks = JSON.stringify(tasks)
+      }
+    }
+  },
   methods: {
     addNewTask () {
       const task = {
