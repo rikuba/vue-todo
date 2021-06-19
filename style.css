@@ -1,0 +1,102 @@
+#app {
+  max-width: 40em;
+  margin: auto;
+}
+
+.app-title {
+  text-align: center;
+}
+
+.new-task {
+  margin: 0;
+}
+
+.new-task__text,
+.new-task__add-button,
+.task-item__text,
+.task-item__remove-button {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.new-task,
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.new-task__text,
+.task-item__text {
+  flex: 1;
+  border: 2px solid transparent;
+  border-radius: 3px;
+}
+
+.new-task__text:hover,
+.task-item__text:hover {
+  border-color: #ccc;
+}
+
+.new-task__text:focus,
+.task-item__text:focus {
+  border-color: #101010;
+  outline: none;
+}
+
+.new-task__label {
+  width: 20px;
+  text-align: center;
+}
+
+.new-task__text:not(:focus)::placeholder {
+  color: #000;
+  opacity: 1;
+}
+
+.new-task__add-button:disabled {
+  visibility: hidden;
+}
+
+.new-task:focus-within .new-task__add-button {
+  visibility: visible;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.task-item__completed {
+  width: 20px;
+  margin: 0;
+  transform: scale(1.5);
+}
+
+.task-item__completed:checked + .task-item__text:not(:focus) {
+  color: #999;
+  text-decoration: line-through;
+}
+
+.task-item__remove-button {
+  opacity: 0;
+  padding: 0;
+  border: none;
+  border-radius: 3px;
+  background: transparent;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.task-item:is(:hover, :focus-within) .task-item__remove-button {
+  opacity: 1;
+}
+
+.task-item__remove-button:is(:hover, :focus) {
+  color: red;
+}
+

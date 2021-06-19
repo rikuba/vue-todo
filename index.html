@@ -3,30 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <title>Todo</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="node_modules/vue/dist/vue.js"></script>
   </head>
 
   <body>
     <div id="app">
-      <h1>Todo</h1>
+      <h1 class="app-title">Todo</h1>
 
-      <form @submit.prevent="addNewTask">
-        <label for="new-task-text">新規タスク</label>
+      <form class="new-task" @submit.prevent="addNewTask">
+        <label class="new-task__label" for="new-task-text">
+          <span role="img" class="new-task__icon" aria-label="新規タスク">
+            &#x2795;&#xFE0E;
+          </span>
+        </label>
         <input
           type="text"
           id="new-task-text"
+          class="new-task__text"
           placeholder="タスクを追加"
           autocomplete="off"
           v-model="newTaskText"
         />
-        <button>追加</button>
+        <button class="new-task__add-button" :disabled="!newTaskText">
+          追加
+        </button>
       </form>
 
-      <ul>
-        <li v-for="(task, index) in tasks" v-bind:key="task.id">
-          <input type="checkbox" v-model="task.isCompleted" />
-          <input type="text" v-model="task.text" />
-          <button @click="removeTask(index)">削除</button>
+      <ul class="task-list">
+        <li
+          class="task-item"
+          v-for="(task, index) in tasks"
+          v-bind:key="task.id"
+        >
+          <input
+            type="checkbox"
+            class="task-item__completed"
+            v-model="task.isCompleted"
+          />
+          <input
+            type="text"
+            class="task-item__text"
+            v-model="task.text"
+            @change="!task.text && removeTask(index)"
+          />
+          <button class="task-item__remove-button" @click="removeTask(index)">
+            <span role="img" class="task-item__remove-icon">
+              &#x2716;&#xFE0E;
+            </span>
+          </button>
         </li>
       </ul>
     </div>
