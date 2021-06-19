@@ -24,6 +24,10 @@ const app = new Vue({
   },
   methods: {
     addNewTask () {
+      if (!this.newTaskText) {
+        return
+      }
+
       const task = {
         id: generateId(),
         text: this.newTaskText,
