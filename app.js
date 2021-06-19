@@ -16,6 +16,9 @@ const app = new Vue({
       }
       this.tasks.push(task)
       this.newTaskText = ''
+    },
+    removeTask (index) {
+      this.tasks.splice(index, 1)
     }
   }
 })
